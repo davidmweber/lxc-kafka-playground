@@ -9,6 +9,7 @@ The following packages are installed:
 * [Kafka](https://kafka.apache.org/)
 * [Kafka streams](https://kafka.apache.org/documentation/streams/) with the default connectors provided by the Confluent distribution
 * [KSQL](https://github.com/confluentinc/ksql)
+* Confluent's [schema registry](https://github.com/confluentinc/schema-registry)
 * [ElasticSearch](https://www.elastic.co/)
 * [Grafana](https://grafana.com/).
 
@@ -26,8 +27,8 @@ installation script. You will need to manually restart them if you reboot the
 image using the following commands:
 
 ```bash
-lxc exe <container-name> 'confluent start'
-lxc exe <container-name> '/root/ksql/bin/ksql-server-start -daemon /root/ksql.properties'
+lxc exe <container-name> confluent start
+lxc exe <container-name> /root/ksql/bin/ksql-server-start -daemon /root/ksql.properties
 ```
 Accesing the container requires that you have its IP adddress. You can obtain
 it using `lxc list` or using the following command:
@@ -41,9 +42,11 @@ The following services are available on the containers external address:
 * Grafana: http://{10.x.x.x}:3000. The username and the password are both "admin".
 * Confluent schema registry: http://{10.x.x.x}:8081. See The docs for all
 the [available ReST](https://docs.confluent.io/current/schema-registry/docs/intro.html#quickstart) functions.
-* Zookeeper is at port 2181. Check if Kafka is running using `echo dump | nc 10.x.x.x 2128` and look for "broker".
-* A KSQL server will be running on the container. Connect to it using `bin/ksql-cli remote 10.x.x.x`. The full suite of KSQL tools are available in `/root/ksql/bin/`.
+* Zookeeper is at port 2181. Check if Kafka is running using `echo dump | nc 10.x.x.x 2181` and look for "broker".
+* A KSQL server will be running on the container. Connect to it using `bin/ksql-cli remote https://10.x.x.x:8090`. The full suite of KSQL tools are available in `/root/ksql/bin/`.
 * ElasticSearch is exposed on port 9200 on the container. Use `curl http://10.x.x.x:9200` to retrieve basic information about this server.
+* The schema registry is exposed at port 8081. Use `curl http://localhost:8081/subjects` to
+ see a list of schemas.
 * Access a shell on the container using `lxc exec <container-name> bash`. The
 KSQL tool set is available from `ksql/bin/`.
 

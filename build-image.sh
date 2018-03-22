@@ -27,4 +27,4 @@ lxc exec $1 /root/install.sh
 
 # Configure elastic ElasticSearch
 lxc file push --uid=0 --gid=0 --mode=644 configs/elasticsearch.yml $1/etc/elasticsearch/elasticsearch.yml
-lxc exec $1 'systemctl restart elasticsearch'
+lxc exec $1 systemctl restart elasticsearch
