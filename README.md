@@ -20,7 +20,11 @@ To build the image and start the services, just run
 ```
 This will create an image called `kafka-streams` and provision it. The script
 will not overwrite an existing container so make sure the container name is
-unique.
+unique. You can check if the services are up by running
+
+```bash
+./check_image.sh <container-name>
+```
 
 Note that the Confluent Kafka suite and the KSQL server are started by the
 installation script. You will need to manually restart them if you reboot the
@@ -49,6 +53,8 @@ the [available ReST](https://docs.confluent.io/current/schema-registry/docs/intr
  see a list of schemas.
 * Access a shell on the container using `lxc exec <container-name> bash`. The
 KSQL tool set is available from `ksql/bin/`.
+* The [Kakfa ReST](https://github.com/confluentinc/kafka-rest) server is available.
+Check it using `curl http://10.x.x.x:8082/topics`
 
 See [this video](https://www.youtube.com/embed/A45uRzJiv7I) for a taste as to
 what this container can do.
