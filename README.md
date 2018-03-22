@@ -15,7 +15,7 @@ The following packages are installed:
 To build the image and start the services, just run
 
 ```bash
-build-image.sh kafka-streams
+./build-image.sh kafka-streams
 ```
 This will create an image called `kafka-streams` and provision it. The script
 will not overwrite an existing container so make sure the container name is
@@ -37,8 +37,12 @@ The following services are available on the containers external address:
 the [available ReST](https://docs.confluent.io/current/schema-registry/docs/intro.html#quickstart) functions.
 * Zookeeper is at port 2181. Check if Kafka is running using `echo dump | nc 10.x.x.x 2128` and look for "broker".
 * A KSQL server will be running on the container. Connect to it using `bin/ksql-cli remote 10.x.x.x`.
-The full suite of KSQL tools are available in `/root/ksql/bin`/.
-* ElasticSearch is currently only available on localhost.
+The full suite of KSQL tools are available in `/root/ksql/bin/`.
+* ElasticSearch is exposed on port 9200 on the container. Use `curl http://10.x.x.x:9200` to retrieve basic information about this server.
+* Access a shell on the container using `lxc exec <container-name> bash`. The
+KSQL tool set is available from `ksql/bin/`.
 
+See [this video](https://www.youtube.com/embed/A45uRzJiv7I) for a taste as to
+what this container can do.
 
 Useful tools: [Kafka streams Scala](https://github.com/lightbend/kafka-streams-scala)
