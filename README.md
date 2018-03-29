@@ -41,6 +41,15 @@ it using `lxc list` or using the following command:
 lxc list | grep <container-name> | cut -d" " -f6
 ```
 
+A word of warning: The lxc container sets up a DNS entry for the container's
+ip address. Somewhere in the Kafka/Zookeeper tool chain will look up the
+IP address of the container and report the domain name to the outside world.
+The symptom is that the Kafka client hangs on the `KafkaConsumer.poll()` method.
+One fix is to just add a line to the host machine's `/etc/hosts` file so the
+host can resolve the name. If your container is callled `kafka`, it will be
+reported with domain name  `kafka.lxd`.
+
+
 The following services are available on the containers external address:
 
 * Grafana: http://{10.x.x.x}:3000. The username and the password are both "admin".

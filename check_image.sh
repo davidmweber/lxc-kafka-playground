@@ -46,7 +46,7 @@ else
   echo "KSQL: Failed"
 fi
 
-# Check the schema registry
+# Check the Kafka ReST interface
 if [[ $(curl -Is http://$address:8082 | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo "Kafka and Kafka ReST: OK"
 else
