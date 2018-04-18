@@ -31,10 +31,13 @@ installation script. You will need to manually restart them if you reboot the
 image using the following commands:
 
 ```bash
-lxc exe <container-name> confluent start
-lxc exe <container-name> /root/ksql/bin/ksql-server-start -daemon /root/ksql.properties
+lxc exec <container-name> confluent stop
+lxc exec <container-name> confluent start
+lxc exec <container-name> /root/ksql/bin/ksql-server-start -daemon /root/ksql.properties
 ```
-Accesing the container requires that you have its IP adddress. You can obtain
+
+
+Accesing the container requires that you have its IP address. You can obtain
 it using `lxc list` or using the following command:
 
 ```bash
@@ -46,7 +49,7 @@ ip address. Somewhere in the Kafka/Zookeeper tool chain will look up the
 IP address of the container and report the domain name to the outside world.
 The symptom is that the Kafka client hangs on the `KafkaConsumer.poll()` method.
 One fix is to just add a line to the host machine's `/etc/hosts` file so the
-host can resolve the name. If your container is callled `kafka`, it will be
+host can resolve the name. If your container is called `kafka`, it will be
 reported with domain name  `kafka.lxd`.
 
 
