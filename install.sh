@@ -22,12 +22,5 @@ systemctl enable elasticsearch
 systemctl start elasticsearch
 systemctl enable grafana-server
 systemctl start grafana-server
-
-# Start the confluent services
-confluent start
-
-
-# Install a local copy of ksql
-wget https://github.com/confluentinc/ksql/releases/download/v0.4/ksql-0.4.tgz
-tar xf ksql-0.4.tgz  -C /root
-/root/ksql/bin/ksql-server-start -daemon /root/ksql.properties
+systemctl enable cassandra
+systemctl start cassandra
