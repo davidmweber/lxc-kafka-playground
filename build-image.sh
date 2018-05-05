@@ -33,5 +33,10 @@ lxc exec $1 systemctl restart elasticsearch
 lxc file push --uid=0 --gid=0 --mode=644 configs/cassandra.yaml $1/etc/cassandra/cassandra.yaml
 lxc exec $1 systemctl restart cassandra
 
+# Configure confluent tools
+lxc file push --uid=0 --gid=0 --mode=644 configs/ksql-server.properties $1/etc/ksql/ksql-server.properties
+
 # Start the confluent services: Needs to be automated
+# This is actually useless because the tools just quit when the shell terminates.
+# We need to set up some systemd startup and shutdown scripts for this
 lxc exec $1 confluent start

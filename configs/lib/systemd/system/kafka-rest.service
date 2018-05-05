@@ -1,0 +1,18 @@
+[Unit]
+Description=Apache Kafka ReST Server
+Requires=kafka.service network.target remote-fs.target
+After=kafka.service network.target remote-fs.target
+ConditionPathExists=/etc/kafka-rest/kafka-rest.properties
+
+[Service]
+Type=simple
+PIDFile=/var/run/kafka-rest.pid
+User=daemon
+Group=daemon
+ExecStart=/usr/bin/kafka-rest-start /etc/kafka-rest/kafka-rest.properties
+ExecStop=/usr/bin/kafka-rest-stop
+Restart=always
+SyslogIdentifier=kafka-rest
+
+[Install]
+WantedBy=multi-user.target

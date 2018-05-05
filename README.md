@@ -1,4 +1,4 @@
-# Kafka Streams Playground
+# The Little Big Data Playground
 
 The scripts here buld an LXD container with a full Kafka/Confluent suite of
 services  The idea is a one stop playground for experiment and development work
@@ -42,8 +42,7 @@ lxc exec <container-name> confluent start
 lxc exec <container-name> /root/ksql/bin/ksql-server-start -daemon /root/ksql.properties
 ```
 
-
-Accesing the container requires that you have its IP address. You can obtain
+Accessing the container requires that you have its IP address. You can obtain
 it using `lxc list` or using the following command:
 
 ```bash

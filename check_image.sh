@@ -16,7 +16,14 @@ if ((  $(lxc list | grep $1 | wc -l) ==  0 )); then
   exit -1
 fi
 
-address=$(lxc list | grep $1 | cut -d" " -f6)
+# You should be able to resolve the IP address from the container name
+# If not, fix the LXD dns as per the README.
+address=$1.lxd
+
+host $address > /dev/null
+if (( $? != 0 )); then
+  echo "Unable to resolve the host name for the container ($1). Please fix the LXD DNS"
+fi
 
 # Check Zookeeper
 echo -n "Zookeeper:          "
