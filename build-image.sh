@@ -29,7 +29,7 @@ lxc exec $1 /root/install.sh
 lxc file push --uid=0 --gid=0 --mode=644 configs/elasticsearch.yml $1/etc/elasticsearch/elasticsearch.yml
 lxc exec $1 systemctl restart elasticsearch
 
-# Configure cassandra so it will be accessible outside the contaioner
+# Configure cassandra so it will be accessible outside the container
 lxc file push --uid=0 --gid=0 --mode=644 configs/cassandra.yaml $1/etc/cassandra/cassandra.yaml
 lxc exec $1 systemctl restart cassandra
 

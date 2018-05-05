@@ -7,7 +7,7 @@ ok="${grn}OK${end}"
 failed="${red}Failed${end}"
 
 if (( $# == 0 )); then
-    echo "Usage $0 <container-name>"
+  echo "Usage $0 <container-name>"
   exit -1
 fi
 
@@ -67,4 +67,10 @@ else
 fi
 
 # Check if Cassandra is running
-# To do....
+echo -n "Cassandra server:   "
+nc -z $address 9042
+if (( $? == 0 )); then
+  echo $ok
+else
+  echo $failed
+fi
