@@ -33,6 +33,15 @@ else
   echo $failed
 fi
 
+# Check if Cassandra is running
+echo -n "Kafka broker:       "
+nc -z $address 9092
+if (( $? == 0 )); then
+  echo $ok
+else
+  echo $failed
+fi
+
 # Check grafana
 echo -n "Grafana:            "
 if [[ $(curl -Is http://$address:3000/login | head -1) = *'HTTP/1.1 200 OK'* ]]; then

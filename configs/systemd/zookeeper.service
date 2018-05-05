@@ -7,10 +7,10 @@ ConditionPathExists=/etc/kafka/zookeeper.properties
 [Service]
 Type=simple
 PIDFile=/var/run/zookeper.pid
-User=daemon
-Group=daemon
-ExecStart=/user/bin/zookeeper-server-start /etc/kafka/zookeeper.properties
-ExecStop=/user/bin/zookeeper-server-stop
+User=cp-kafka
+Group=confluent
+ExecStart=/usr/bin/zookeeper-server-start /etc/kafka/zookeeper.properties
+ExecStop=/usr/bin/zookeeper-server-stop
 Restart=always
 SyslogIdentifier=zookeeper
 

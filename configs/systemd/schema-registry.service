@@ -7,8 +7,8 @@ ConditionPathExists=/etc/schema-registry/schema-registry.properties
 [Service]
 Type=simple
 PIDFile=/var/run/schema-registry.pid
-User=daemon
-Group=daemon
+User=cp-kafka
+Group=confluent
 ExecStart=/usr/bin/schema-registry-start /etc/schema-registry/schema-registry.properties
 ExecStop=/usr/bin/schema-registry-stop
 Restart=always

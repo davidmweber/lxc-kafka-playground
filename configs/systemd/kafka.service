@@ -8,8 +8,8 @@ ConditionPathExists=/etc/kafka/server.properties
 [Service]
 Type=simple
 PIDFile=/var/run/kafka.pid
-User=daemon
-Group=daemon
+User=cp-kafka
+Group=confluent
 ExecStart=/usr/bin/kafka-server-start /etc/kafka/server.properties
 ExecStop=/usr/bin/kafka-server-stop
 Restart=always

@@ -7,8 +7,8 @@ ConditionPathExists=/etc/kafka/connect-standalone.properties
 [Service]
 Type=simple
 PIDFile=/var/run/kafka-connect.pid
-User=daemon
-Group=daemon
+User=cp-kafka
+Group=confluent
 ExecStart=/usr/bin/connect-standalone /etc/kafka/connect-standalone.properties
 ExecStop= kill `cat /var/run/kafka-connect.pid`
 Restart=always

@@ -7,8 +7,8 @@ ConditionPathExists=/etc/kafka-rest/kafka-rest.properties
 [Service]
 Type=simple
 PIDFile=/var/run/kafka-rest.pid
-User=daemon
-Group=daemon
+User=cp-kafka
+Group=confluent
 ExecStart=/usr/bin/kafka-rest-start /etc/kafka-rest/kafka-rest.properties
 ExecStop=/usr/bin/kafka-rest-stop
 Restart=always

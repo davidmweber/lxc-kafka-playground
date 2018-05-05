@@ -8,8 +8,8 @@ ConditionPathExists=/etc/ksql/ksql-server.properties
 [Service]
 Type=simple
 PIDFile=/var/run/ksql-server.pid
-User=daemon
-Group=daemon
+User=cp-kafka
+Group=confluent
 ExecStart=/usr/bin/ksql-server-start /etc/ksql/ksql-server.properties
 ExecStop=/usr/bin/ksql-server-stop
 Restart=always
