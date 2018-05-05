@@ -76,7 +76,7 @@ fi
 
 # Check the Kafka ReST interface
 echo -n "Kafka ReST server:   "
-if [[ $(curl -Is http://$address:8082 | head -1) = *'HTTP/1.1 200 OK'* ]]; then
+if [[ $(curl -Is http://$address:8082/topics | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo $ok
 else
   echo $failed
