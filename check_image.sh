@@ -52,7 +52,7 @@ fi
 
 # Check the schema registry
 echo -n "KSQL server:        "
-if [[ $(curl -Is http://$address:8090 | head -1) = *'HTTP/1.1 200 OK'* ]]; then
+if [[ $(curl -Is http://$address:8088/status | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo $ok
 else
   echo $failed

@@ -34,4 +34,4 @@ lxc file push --uid=0 --gid=0 --mode=644 configs/cassandra.yaml $1/etc/cassandra
 lxc exec $1 systemctl restart cassandra
 
 # Start the confluent services: Needs to be automated
-lxc exec confluent start
+lxc exec $1 confluent start

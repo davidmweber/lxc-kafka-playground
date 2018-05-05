@@ -1,10 +1,15 @@
 # Kafka Streams Playground
 
-The scripts here buld an LXC container with a full Kafka/Confluent suite of
+The scripts here buld an LXD container with a full Kafka/Confluent suite of
 services  The idea is a one stop playground for experiment and development work
-for Kafka and friends.
+for Kafka and friends. We assume that you have a fully functional `lxd` setup
+running on your local machine with a functional DNS that can [resolve container
+IP addresses](https://discuss.linuxcontainers.org/t/dns-for-lxc-containers/235)
+from the container name. You can check if the DNS is working for some container
+called `container` by running `host container.lxd`. This should return the
+IP address of the container.
 
-The following packages are installed:
+The following packages are installed as part of the playground:
 
 * [Kafka](https://kafka.apache.org/)
 * [Kafka streams](https://kafka.apache.org/documentation/streams/) with the default connectors provided by the Confluent distribution
@@ -12,6 +17,7 @@ The following packages are installed:
 * Confluent's [schema registry](https://github.com/confluentinc/schema-registry)
 * [ElasticSearch](https://www.elastic.co/)
 * [Grafana](https://grafana.com/).
+* [Cassandra](http://cassandra.apache.org/)
 
 To build the image and start the services, just run
 
@@ -44,15 +50,6 @@ it using `lxc list` or using the following command:
 lxc list | grep <container-name> | cut -d" " -f6
 ```
 
-A word of warning: The lxc container sets up a DNS entry for the container's
-ip address. Somewhere in the Kafka/Zookeeper tool chain will look up the
-IP address of the container and report the domain name to the outside world.
-The symptom is that the Kafka client hangs on the `KafkaConsumer.poll()` method.
-One fix is to just add a line to the host machine's `/etc/hosts` file so the
-host can resolve the name. If your container is called `kafka`, it will be
-reported with domain name  `kafka.lxd`.
-
-
 The following services are available on the containers external address:
 
 * Grafana: http://{10.x.x.x}:3000. The username and the password are both "admin".
@@ -72,3 +69,9 @@ See [this video](https://www.youtube.com/embed/A45uRzJiv7I) for a taste as to
 what this container can do.
 
 Useful tools: [Kafka streams Scala](https://github.com/lightbend/kafka-streams-scala)
+
+
+You can start the services without having to use confluent's tool:
+
+* Zookeeper: `/usr/bin/zookeeper-server-start -daemon /etc/kafka/zookeeper.properties`
+* Kafka server: `/usr/bin/kafka-server-start -daemon /etc/kafka/server.properties`
