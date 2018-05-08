@@ -41,13 +41,13 @@ You can check if the services are up by running
 ```
 If you have configured LXD's DNS properly, the container should be resolvable
 from its name. For this example, we assume the container was called `kafka-streams`.
-In our example, the DNS entry for the container will be `kafka-streams.lxd`
+In our example, the DNS entry for the container will be `kafka-streams.lxd`.
+
+Check out `kafka-rest_test.sh` for an example of how to use HTTP to produce
+and consume messages in Kafka.
 
 Accessing the container requires that you have its IP address. You can obtain
-it using `lxc list` or using the following command:
-
-```bash
-lxc list | grep <container-name> | cut -d" " -f6
+it using `lxc list` or `host <container-name>.lxd`/
 ```
 
 The following services are available on the containers external address:
