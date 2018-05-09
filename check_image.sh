@@ -66,7 +66,7 @@ else
   echo $failed
 fi
 
-# Check the schema registry
+# Check the KSQL server
 echo -n "KSQL server:         "
 if [[ $(curl -Is http://$address:8088/status | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo $ok
@@ -82,8 +82,8 @@ else
   echo $failed
 fi
 
-# Check the Kafka ReST interface
-echo -n "Connect ReST server: "
+# Check the Kafka Connect server
+echo -n "Connect server: "
 if [[ $(curl -Is http://$address:8083/connectors | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo $ok
 else

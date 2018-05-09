@@ -58,12 +58,15 @@ the [available ReST](https://docs.confluent.io/current/schema-registry/docs/intr
 * Zookeeper is at port 2181. Check if Kafka is running using `echo dump | nc kafka-streams.lxd 2181` and look for "broker".
 * A KSQL server will be running on the container. Connect to it using `bin/ksql-cli remote https://kafka-streams.lxd:8090`. The full suite of KSQL tools are available in `/root/ksql/bin/`.
 * ElasticSearch is exposed on port 9200 on the container. Use `curl http://kafka-streams.lxd:9200` to retrieve basic information about this server.
-* The schema registry is exposed at port 8081. Use `curl http://kafka-streams.lxd:8081/subjects` to
- see a list of schemas.
-* Access a shell on the container using `lxc exec <container-name> bash`. The
-KSQL tool set is available from `ksql/bin/`.
+* The schema registry is exposed at port 8081. Use `curl http://kafka-streams.lxd:8081/subjects` to see a list of schemas.
 * The [Kakfa ReST](https://github.com/confluentinc/kafka-rest) server is available.
 Check it using `curl http://kafka-streams.lxd:8082/topics`
+* The [Kafka Connect](https://docs.confluent.io/current/connect) is started
+in distributed mode and individual connectors must be started using the
+[ReST API](https://docs.confluent.io/current/connect/restapi.html#connect-userguide-rest).
+
+You can access a shell on the container using `lxc exec <container-name> bash`. The
+KSQL tool set is available from `ksql/bin/`.
 
 See [this video](https://www.youtube.com/embed/A45uRzJiv7I) for a taste as to
 what this container can do.
