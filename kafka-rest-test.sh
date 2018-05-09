@@ -38,5 +38,6 @@ echo -n "Retrieved message: "
 curl -X GET -H "Accept: application/vnd.kafka.json.v2+json" \
   http://$address/consumers/my_json_consumer/instances/my_consumer_instance/records
 echo
+
 curl -X DELETE -H "Content-Type: application/vnd.kafka.v2+json" \
   http://$address/consumers/my_json_consumer/instances/my_consumer_instance
