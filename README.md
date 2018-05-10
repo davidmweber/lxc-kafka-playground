@@ -49,7 +49,7 @@ Check out `kafka-rest_test.sh` for an example of how to use HTTP to produce
 and consume messages in Kafka.
 
 Accessing the container requires that you have its IP address. You can obtain
-it using `lxc list` or `host <container-name>.lxd`/
+it using `lxc list` or `host <container-name>.lxd`.
 ```
 
 The following services are available on the containers external address:
