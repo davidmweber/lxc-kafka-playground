@@ -83,7 +83,7 @@ else
 fi
 
 # Check the Kafka Connect server
-echo -n "Connect server: "
+echo -n "Connect server:      "
 if [[ $(curl -Is http://$address:8083/connectors | head -1) = *'HTTP/1.1 200 OK'* ]]; then
   echo $ok
 else

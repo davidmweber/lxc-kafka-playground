@@ -30,8 +30,9 @@ lxc exec $1 systemctl restart elasticsearch
 lxc file push --uid=0 --gid=0 --mode=644 configs/cassandra.yaml $1/etc/cassandra/cassandra.yaml
 lxc exec $1 systemctl restart cassandra
 
-# Configure confluent tools
+# Configure confluent tools. Note connect runs with schema's disabled.
 lxc file push --uid=0 --gid=0 --mode=644 configs/ksql-server.properties $1/etc/ksql/ksql-server.properties
+lxc file push --uid=0 --gid=0 --mode=644 configs/connect-no-schema.properties $1/etc/kafka/connect-distributed.properties
 
 # Copy the systemd control scripts over to the container and enable the confluent services
 cd configs/systemd

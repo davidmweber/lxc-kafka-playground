@@ -2,7 +2,7 @@
 Description=Apache Kafka Connect
 Requires=kafka.service network.target remote-fs.target
 After=kafka.service network.target remote-fs.target
-ConditionPathExists=/etc/kafka/connect-standalone.properties
+ConditionPathExists=/etc/kafka/connect-distributed.properties
 
 [Service]
 Type=simple

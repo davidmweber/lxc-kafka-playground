@@ -4,7 +4,9 @@ The scripts here buld an LXD container with a full Kafka/Confluent suite of
 services  The idea is a one stop playground for experiment and development work
 for Kafka and friends. It is supposed to emulate a deployed set of services
 rather than some local deployment. It is helpful to have a local copy of tools
-such as `csqlsh` available locally to interact with the playground.
+such as `csqlsh` available locally to interact with the playground. Some scripts
+require that you have `jq` installed as a json pretty printer. Get it using
+`apt-get install jq`.
 
 We assume that you have a fully functional `lxd` setup
 running on your local machine with a functional DNS that can [resolve container
