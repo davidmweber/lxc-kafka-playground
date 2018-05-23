@@ -33,7 +33,7 @@ else
   echo $failed
 fi
 
-# Check if Cassandra is running
+# Check if Zookeeper can see the Kafka broker
 echo -n "Kafka broker:        "
 nc -z $address 9092
 if (( $? == 0 )); then
