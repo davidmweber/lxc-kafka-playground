@@ -3,7 +3,12 @@
 The scripts here buld an LXD container with a full Kafka/Confluent suite of
 services  The idea is a one stop playground for experiment and development work
 for Kafka and friends. It is supposed to emulate a deployed set of services
-rather than some local deployment. It is helpful to have a local copy of tools
+rather than some local deployment to facilitate experimentation and development.
+If you are looking for gentle introductions into this tool stack, check out the
+[Confluent platform](https://www.confluent.io/) or [Landoop](https://www.landoop.com/).
+In particular, their quick start options may be better suited to your needs.
+
+It is helpful to have a local copy of tools
 such as `csqlsh` available locally to interact with the playground. Some scripts
 require that you have `jq` installed as a json pretty printer. Get it using
 `apt-get install jq`.
@@ -51,7 +56,8 @@ and consume messages in Kafka.
 Accessing the container requires that you have its IP address. You can obtain
 it using `lxc list` or `host <container-name>.lxd`.
 
-The following services are available on the containers external address:
+The following services are available on the containers external address (we have
+assumed it is resolvable at `kafka-streams.lxd`):
 
 * Grafana: http://kafka-streams.lxd:3000. The username and the password are both "admin".
 * Confluent schema registry: http://kafka-streams.lxd:8081. See The docs for all
