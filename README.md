@@ -1,6 +1,6 @@
 # The Little Big Data Playground
 
-The scripts here buld an LXD container with a full Kafka/Confluent suite of
+The scripts here build a LXD container with a full Kafka/Confluent suite of
 services  The idea is a one stop playground for experiment and development work
 for Kafka and friends. It is supposed to emulate a deployed set of services
 rather than some local deployment to facilitate experimentation and development.
