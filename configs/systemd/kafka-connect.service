@@ -10,7 +10,7 @@ PIDFile=/var/run/kafka-connect.pid
 User=cp-kafka
 Group=confluent
 ExecStart=/usr/bin/connect-distributed /etc/kafka/connect-distributed.properties
-ExecStop= kill `cat /var/run/kafka-connect.pid`
+ExecStop= /bin/cat /var/run/kafka-connect.pid | xargs kill
 Restart=always
 SyslogIdentifier=kafka-connect
 
