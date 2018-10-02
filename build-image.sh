@@ -13,7 +13,7 @@ then
 fi
 #
 # This script assumes that there is no container called kafka-streams
-lxc launch ubuntu:16.04 $1
+lxc launch ubuntu:18.04 $1
 
 echo "Waiting for the container network to come up"
 sleep 15

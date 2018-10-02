@@ -15,7 +15,7 @@ require that you have `jq` installed as a json pretty printer. Get it using
 
 We assume that you have a fully functional `lxd` setup
 running on your local machine with a functional DNS that can [resolve container
-IP addresses](https://discuss.linuxcontainers.org/t/dns-for-lxc-containers/235)
+IP addresses](https://blog.simos.info/how-to-use-lxd-container-hostnames-on-the-host-in-ubuntu-18-04/)
 from the container name. You can check if the DNS is working for some container
 called `container` by running `host container.lxd`. This should return the
 IP address of the container. If you do not do this then services such as Kafka
